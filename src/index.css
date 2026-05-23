@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Light Violet Color Tokens */
+    --background: 260 30% 98.5%;
+    --foreground: 260 40% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 40% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 40% 12%;
+    --primary: 262 80% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 25% 94%;
+    --secondary-foreground: 260 40% 15%;
+    --muted: 260 20% 95%;
+    --muted-foreground: 260 15% 45%;
+    --accent: 260 30% 94%;
+    --accent-foreground: 262 80% 50%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 260 20% 90%;
+    --input: 260 20% 94%;
+    --ring: 262 80% 58%;
+    --chart-1: 262 80% 58%;
+    --chart-2: 142 70% 45%;
+    --chart-3: 45 90% 45%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 346 80% 55%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    /* Premium Dark Violet Color Tokens */
+    --background: 260 25% 6%;
+    --foreground: 260 20% 98%;
+    --card: 260 25% 10%;
+    --card-foreground: 260 20% 98%;
+    --popover: 260 25% 10%;
+    --popover-foreground: 260 20% 98%;
+    --primary: 262 80% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 20% 15%;
+    --secondary-foreground: 260 20% 98%;
+    --muted: 260 20% 12%;
+    --muted-foreground: 260 15% 65%;
+    --accent: 260 20% 15%;
+    --accent-foreground: 262 80% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 260 20% 16%;
+    --input: 260 20% 16%;
+    --ring: 262 80% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom light violet scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(262 20% 80%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(262 20% 70%);
+}
+
+/* ==========================================
+   GLOBAL THEME OVERRIDES FOR TAILWIND UTILITIES
+   Ensures light theme works flawlessly without React alterations
+   ========================================== */
+
+/* Background Overrides */
+.bg-slate-950 {
+  background-color: hsl(var(--background)) !important;
+}
+
+.bg-slate-900 {
+  background-color: hsl(var(--card)) !important;
+}
+
+.bg-slate-900\/50 {
+  background-color: hsl(var(--card)) !important;
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.05), 0 2px 8px -1px rgba(124, 58, 237, 0.03) !important;
+}
+
+.bg-slate-800, .bg-slate-800\/50, .bg-slate-800\/30 {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.hover\:bg-slate-800\/50:hover, .hover\:bg-slate-800:hover {
+  background-color: hsl(var(--primary) / 0.06) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Border Overrides */
+.border-slate-800, .border-slate-800\/80, .border-slate-800\/60, .border-slate-800\/50 {
+  border-color: hsl(var(--border)) !important;
+}
+
+.border-slate-700 {
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Text Overrides */
+.text-slate-200, .text-slate-300 {
+  color: hsl(var(--foreground)) !important;
+}
+
+.text-slate-400 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.text-slate-500 {
+  color: hsl(var(--muted-foreground) / 0.8) !important;
+}
+
+/* Primary Accents (Blue -> Violet Redirection) */
+.bg-blue-600 {
+  background-color: hsl(var(--primary)) !important;
+}
+
+.bg-blue-600\/20 {
+  background-color: hsl(var(--primary) / 0.12) !important;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: hsl(262 80% 50%) !important;
+}
+
+.text-blue-400, .text-blue-600 {
+  color: hsl(var(--primary)) !important;
+}
+
+.text-blue-600:hover {
+  color: hsl(262 80% 50%) !important;
+}
+
+.focus-visible\:ring-blue-500:focus-visible {
+  --tw-ring-color: hsl(var(--primary)) !important;
+}
+
+/* ==========================================
+   SUMMARY CARDS CONTRAST ENHANCEMENTS
+   Optimized for premium light background readability
+   ========================================== */
+
+/* Card 1: Total Balance (Violet/Primary) */
+.from-blue-600\/20, .to-blue-800\/10 {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--primary) / 0.04)) !important;
+}
+.border-blue-500\/20 {
+  border-color: hsl(var(--primary) / 0.15) !important;
+}
+.bg-blue-500\/20 {
+  background-color: hsl(var(--primary) / 0.12) !important;
+}
+
+/* Card 2: Credits (Emerald Green) */
+.from-emerald-600\/20, .to-emerald-800\/10 {
+  background: linear-gradient(135deg, hsl(142 70% 95%), hsl(142 70% 98%)) !important;
+}
+.border-emerald-500\/20 {
+  border-color: hsl(142 70% 85%) !important;
+}
+.bg-emerald-500\/20 {
+  background-color: hsl(142 70% 92%) !important;
+}
+.text-emerald-400 {
+  color: hsl(142 70% 35%) !important;
+}
+
+/* Card 3: Debits (Rose Red) */
+.from-rose-600\/20, .to-rose-800\/10 {
+  background: linear-gradient(135deg, hsl(346 80% 96%), hsl(346 80% 98%)) !important;
+}
+.border-rose-500\/20 {
+  border-color: hsl(346 80% 88%) !important;
+}
+.bg-rose-500\/20 {
+  background-color: hsl(346 80% 93%) !important;
+}
+.text-rose-400 {
+  color: hsl(346 80% 45%) !important;
+}
+
+/* Card 4: Transactions (Amber Orange) */
+.from-amber-600\/20, .to-amber-800\/10 {
+  background: linear-gradient(135deg, hsl(45 90% 94%), hsl(45 90% 97%)) !important;
+}
+.border-amber-500\/20 {
+  border-color: hsl(45 90% 82%) !important;
+}
+.bg-amber-500\/20 {
+  background-color: hsl(45 90% 91%) !important;
+}
+.text-amber-400 {
+  color: hsl(45 90% 35%) !important;
+}
+
+/* ==========================================
+   BADGES & TABLE ROW HOVERS
+   ========================================== */
+
+/* Badge States */
+.bg-emerald-500\/15 {
+  background-color: hsl(142 70% 93%) !important;
+  color: hsl(142 70% 35%) !important;
+  border-color: hsl(142 70% 85%) !important;
+}
+.bg-amber-500\/15 {
+  background-color: hsl(45 90% 92%) !important;
+  color: hsl(45 90% 35%) !important;
+  border-color: hsl(45 90% 82%) !important;
+}
+.bg-rose-500\/15 {
+  background-color: hsl(346 80% 94%) !important;
+  color: hsl(346 80% 45%) !important;
+  border-color: hsl(346 80% 86%) !important;
+}
+
+/* Row Hover */
+.hover\:bg-slate-800\/30:hover, .hover\:bg-slate-800\/40:hover {
+  background-color: hsl(var(--muted) / 0.4) !important;
+}
+
+/* ==========================================
+   RECHARTS SVG CHART OVERRIDES
+   ========================================== */
+.recharts-cartesian-axis-tick text {
+  fill: hsl(var(--muted-foreground)) !important;
+}
+.recharts-legend-item-text {
+  color: hsl(var(--muted-foreground)) !important;
+}
+.recharts-default-tooltip {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+.recharts-tooltip-item {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* ==========================================
+   GRADIENT TRANSFORMATION UTILITIES
+   Redirects standard gradients into theme-harmonious ones
+   ========================================= */
+.from-blue-500 {
+  --tw-gradient-from: hsl(var(--primary)) !important;
+  --tw-gradient-to: hsl(280 65% 60%) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.to-cyan-400 {
+  --tw-gradient-to: hsl(280 65% 60%) !important;
+}
+
+/* ==========================================
+   SHADCN / GENERAL COMPONENT OVERRIDES
+   ========================================== */
+.border-border {
+  border-color: hsl(var(--border)) !important;
+}
+.text-white-force {
+  color: #ffffff !important;
+}
+input, select, textarea {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+input::placeholder {
+  color: hsl(var(--muted-foreground) / 0.6) !important;
+}
+
+/* Login / Signup page inputs — keep white background */
+.login-page-input {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #e2e8f0 !important;
+}
+.login-page-input::placeholder {
+  color: #94a3b8 !important;
+}
+dialog, [role="dialog"] {
+  background-color: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+.bg-slate-900\/80 {
+  background-color: hsl(var(--card) / 0.8) !important;
+}
+
+/* ==========================================
+   DARK MODE COMPONENT OVERRIDES
+   ========================================== */
+
+/* Dark Mode scrollbar adjustments */
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(262 20% 30%);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(262 20% 40%);
+}
+
+/* Dark Mode Emerald status card/badge styling */
+.dark .from-emerald-600\/20, .dark .to-emerald-800\/10 {
+  background: linear-gradient(135deg, hsl(142 70% 8% / 0.4), hsl(142 70% 12% / 0.2)) !important;
+}
+.dark .border-emerald-500\/20 {
+  border-color: hsl(142 70% 25% / 0.3) !important;
+}
+.dark .bg-emerald-500\/20 {
+  background-color: hsl(142 70% 20% / 0.4) !important;
+}
+.dark .text-emerald-400 {
+  color: hsl(142 70% 50%) !important;
+}
+.dark .bg-emerald-500\/15 {
+  background-color: hsl(142 70% 15% / 0.3) !important;
+  color: hsl(142 70% 50%) !important;
+  border-color: hsl(142 70% 25% / 0.3) !important;
+}
+
+/* Dark Mode Rose status card/badge styling */
+.dark .from-rose-600\/20, .dark .to-rose-800\/10 {
+  background: linear-gradient(135deg, hsl(346 80% 8% / 0.4), hsl(346 80% 12% / 0.2)) !important;
+}
+.dark .border-rose-500\/20 {
+  border-color: hsl(346 80% 25% / 0.3) !important;
+}
+.dark .bg-rose-500\/20 {
+  background-color: hsl(346 80% 20% / 0.4) !important;
+}
+.dark .text-rose-400 {
+  color: hsl(346 80% 60%) !important;
+}
+.dark .bg-rose-500\/15 {
+  background-color: hsl(346 80% 15% / 0.3) !important;
+  color: hsl(346 80% 60%) !important;
+  border-color: hsl(346 80% 25% / 0.3) !important;
+}
+
+/* Dark Mode Amber status card/badge styling */
+.dark .from-amber-600\/20, .dark .to-amber-800\/10 {
+  background: linear-gradient(135deg, hsl(45 90% 8% / 0.4), hsl(45 90% 12% / 0.2)) !important;
+}
+.dark .border-amber-500\/20 {
+  border-color: hsl(45 90% 25% / 0.3) !important;
+}
+.dark .bg-amber-500\/20 {
+  background-color: hsl(45 90% 20% / 0.4) !important;
+}
+.dark .text-amber-400 {
+  color: hsl(45 90% 50%) !important;
+}
+.dark .bg-amber-500\/15 {
+  background-color: hsl(45 90% 15% / 0.3) !important;
+  color: hsl(45 90% 50%) !important;
+  border-color: hsl(45 90% 25% / 0.3) !important;
+}
+
+/* Dark Mode general content containers and hover states */
+.dark .hover\:bg-slate-800\/30:hover, .dark .hover\:bg-slate-800\/40:hover {
+  background-color: hsl(var(--muted) / 0.4) !important;
+}
+
+.dark .border-slate-800, .dark .border-slate-800\/80, .dark .border-slate-800\/60, .dark .border-slate-800\/50, .dark .border-slate-700 {
+  border-color: hsl(var(--border)) !important;
+}
+
+.dark .bg-slate-900\/50, .dark .bg-slate-900 {
+  background-color: hsl(var(--card)) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2), 0 2px 8px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .bg-slate-800\/50, .dark .bg-slate-800\/30 {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.dark .text-slate-200, .dark .text-slate-300 {
+  color: hsl(var(--foreground)) !important;
+}
+
+.dark .text-slate-400 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.dark .text-slate-500 {
+  color: hsl(var(--muted-foreground) / 0.8) !important;
+}
+
