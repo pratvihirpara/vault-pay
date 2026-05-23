@@ -139,9 +139,9 @@ Open:
 
 ## 🔑 Authentication
 
-* Users can register and login normally
-* Admin role can be assigned via Admin Panel
-
+* Users can register and login using their credentials
+* Authentication is handled through a secure login system
+* After login, users can access the main features of the application
 ---
 
 ## 🏗️ Build for Production
